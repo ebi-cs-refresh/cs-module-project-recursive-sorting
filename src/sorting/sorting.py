@@ -1,11 +1,12 @@
 # TO-DO: complete the helper function below to merge 2 sorted arrays
 
 arr1 = [99, 44, 6, 2, 1, 5, 63, 87, 283, 40]
+arr2 = []
 
 
 def merge(arrA, arrB):
     elements = len(arrA) + len(arrB)
-    # merged_arr = [0] * elements  #* its this part that is not clicking
+    merged_arr = [0] * elements  # * its this part that is not clicking
     merged_arr = []
     # Your code here
 
@@ -40,6 +41,8 @@ def merge_sort(arr):
     # Your code here
     if len(arr) == 1:
         return arr
+    if len(arr) == 0:
+        return arr
     else:
         mid = len(arr)//2
         left_arr = arr[:mid]
@@ -50,7 +53,7 @@ def merge_sort(arr):
     return arr
 
 
-print(merge_sort(arr1))
+print(merge_sort(arr2))
 
 
 # STRETCH: implement the recursive logic for merge sort in a way that doesn't
