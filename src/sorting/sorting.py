@@ -6,7 +6,7 @@ arr2 = []
 
 def merge(arrA, arrB):
     elements = len(arrA) + len(arrB)
-    merged_arr = [0] * elements  # * its this part that is not clicking
+    # merged_arr = [0] * elements  # * its this part that is not clicking
     merged_arr = []
     # Your code here
 
@@ -62,11 +62,47 @@ print(merge_sort(arr2))
 # or data structures; it can only re-use the memory it was given as input
 
 
-# def merge_in_place(arr, start, mid, end):
-#     pass
-#     # Your code here
+def merge_in_place(arr, start, mid, end):
+    print(arr)
+    print(start)
+    print(mid)
+    print(end)
+
+    if len(arr) == 1:
+        return arr
+    if len(arr) == 0:
+        return arr
+    else:
+        mid = len(arr)//2
+        left_arr = arr[:mid]
+        right_arr = arr[mid:]
+
+        return merge(merge_sort(left_arr), merge_sort(right_arr))
+
+    return arr
+    # Your code here
 
 
-# def merge_sort_in_place(arr, l, r):
-#     pass
+def merge_sort_in_place(arr, l, r):
+    print(arr)
+    print(l)
+    print(r)
+
+    leftindex = 0
+    rightindex = 0
+    left = len(l)
+    right = len(r)
+
+    while leftindex < left and rightindex < right:
+        # global count
+        # count += 1
+        if left[leftindex] < right[rightindex]:
+            arr.append(left[leftindex])
+            leftindex += 1
+        else:
+            arr.append(right[rightindex])
+            rightindex += 1
+    arr += left[leftindex:]+right[rightindex:]
+
+    return arr
 #     # Your code here
