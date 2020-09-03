@@ -4,24 +4,46 @@ arr2 = [-9, -8, -6, -4, -3, -2, 0, 1, 2, 3, 5, 7, 8, 9]
 
 # TO-DO: Implement a recursive implementation of binary search
 
+tar = 4
+
 
 def binary_search(arr, target, start, end):
+    arr.sort()
+    target = tar
+    print(end, start)
+    if end >= start:
+        print("its bigger")
+        mid = start+(end-start)//2
+        print("arr mid", arr[mid])
 
-    print(start, end)
+        if arr[mid] == target:
+            print("FOUND IT")
+            return mid
+        elif arr[mid] < target:
+            return binary_search(arr, target, mid+1, end)
 
-    if end is None:
-        end = len(arr)-1
-    if start > end:
-        return False
-    mid = (start+end)//2
-    print("target", target, arr[mid])
+        else:
+            return binary_search(arr, target, start, mid-1)
 
-    if target == arr[mid]:
-        return mid
-    if target < arr[mid]:
-        return binary_search(arr, target, start, mid-1)
     else:
-        return binary_search(arr, target, mid+1, end)
+        print("NOT THERE")
+        return -1
+
+    # print(start, end)
+
+    # if end is None:
+    #     end = len(arr)-1
+    # if start > end:
+    #     return False
+    # mid = (start+end)//2
+    # print("target", target, arr[mid])
+
+    # if target == arr[mid]:
+    #     return mid
+    # if target < arr[mid]:
+    #     return binary_search(arr, target, start, mid-1)
+    # else:
+    #     return binary_search(arr, target, mid+1, end)
 
     # if len(arr) == 0:
     #     print("Array is empty")
@@ -46,11 +68,16 @@ def binary_search(arr, target, start, end):
     #             return binary_search(arr, target, mid+1, end)
     #         else:
     #             print("wayy")
-
-
 # print(binary_search(arr1, -8, 0, len(arr1)-1), 1)
-print(binary_search(arr1, 44, 0, len(arr1)-1))
+# print("binary search", binary_search(arr1, 44, 0, len(arr1)-1))
 
+
+final = binary_search(arr1, 1, 0, len(arr1)-1)
+
+if final == -1:
+    print("Doesnt exist")
+else:
+    binary_search(arr1, 1, 0, len(arr1)-1)
 
 # STRETCH: implement an order-agnostic binary search
 # This version of binary search should correctly find
@@ -76,4 +103,4 @@ def agnostic_binary_search(arr, target):
     return target
 
 
-print(agnostic_binary_search(arr1, 2))
+# print(agnostic_binary_search(arr1, 2))
